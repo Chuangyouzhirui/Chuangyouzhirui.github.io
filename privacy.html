@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="Keywords" content="blog"/>
+    <meta name="Description" content="blog"/>
+    <title>Simple</title>
+    <link rel="shortcut icon" href="/static/favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+<body>
+<div class="main">
+    <div class="header">
+    	<ul id="pages">
+            <li><a href="/">home</a></li>
+            <li><a href="/#/tags">tags</a></li>
+            <li><a href="/#/archive">archive</a></li>
+    	</ul>
+    </div>
+	<div class="wrap-header">
+	<h1>
+    <a href="/" id="title"></a>
+	</h1>
+	</div>
+<div id="md" style="display: none;">
+<!-- markdown -->
+                                                    《终极对决》隐私政策
+  
+ 
+《终极对决》
+尊重并保护所有使用服务用户的个人隐私权。为了给您提供更准确、更有个性
+化的服务，《终极对决》会按照本隐私权政策的规定使用和披露您的个人信息。
+但我们将以高度的勤勉、审慎义务对待这些信息。除本隐私权政策另有规定外，在
+未征得您事先许可的情况下，《终极对决》不会将这些信息对外披露或向第三方提供。《终极对决》会不时更新本隐私权政策。
+ 
+您在同意《终极对决》服务使用协议之时，即视为您已经同意本隐私权政策全部内容。本隐私权政策属于《终极对决》服务使用协议不可分割的一部分。
+  
+1. 
+适用范围
+  
+a) 
+在您使用《终极对决》提供的一切游戏服务内容时，游戏会合法取得您的所有游戏状态数据
+  
+b) 
+《终极对决》通过合法途径从商业伙伴处取得的用户个人数据。
+  
+2. 
+信息使用
+  
+a) 
+《终极对决》不会向任何无关第三方提供、出售、出租、分享或交易您的个人信息，除非事
+先得到您的许可。
+
+b) 
+《终极对决》亦不允许任何第三方以任何手段收集、编辑、出售或者无偿传播您的个人信
+息。任何《终极对决》用户如从事上述活动，一经发现，我司有权立即终止与该用户的服
+务协议。
+  
+  
+3. 
+信息披露
+  
+《终极对决》将在法律许可范围内全部或部分的披露获取的游戏数据信息（如游戏等级，排行榜数据等）
+
+  
+
+
+<!-- markdown end -->
+</div>
+<div class="entry" id="main">
+<!-- content -->
+<pre><code>                                                《终极对决》隐私政策
+</code></pre>
+
+<p>《终极对决》
+尊重并保护所有使用服务用户的个人隐私权。为了给您提供更准确、更有个性
+化的服务，《终极对决》会按照本隐私权政策的规定使用和披露您的个人信息。
+但我们将以高度的勤勉、审慎义务对待这些信息。除本隐私权政策另有规定外，在
+未征得您事先许可的情况下，《终极对决》不会将这些信息对外披露或向第三方提供。《终极对决》会不时更新本隐私权政策。</p>
+
+<p>您在同意《终极对决》服务使用协议之时，即视为您已经同意本隐私权政策全部内容。本隐私权政策属于《终极对决》服务使用协议不可分割的一部分。</p>
+
+<ol>
+<li>
+适用范围</li>
+</ol>
+
+<p>a) 
+在您使用《终极对决》提供的一切游戏服务内容时，游戏会合法取得您的所有游戏状态数据</p>
+
+<p>b) 
+《终极对决》通过合法途径从商业伙伴处取得的用户个人数据。</p>
+
+<ol>
+<li>
+信息使用</li>
+</ol>
+
+<p>a) 
+《终极对决》不会向任何无关第三方提供、出售、出租、分享或交易您的个人信息，除非事
+先得到您的许可。</p>
+
+<p>b) 
+《终极对决》亦不允许任何第三方以任何手段收集、编辑、出售或者无偿传播您的个人信
+息。任何《终极对决》用户如从事上述活动，一经发现，我司有权立即终止与该用户的服
+务协议。</p>
+
+<ol>
+<li>
+信息披露</li>
+</ol>
+
+<p>《终极对决》将在法律许可范围内全部或部分的披露获取的游戏数据信息（如游戏等级，排行榜数据等）</p>
+<!-- content end -->
+</div>
+<br>
+<br>
+    <div id="disqus_thread"></div>
+	<div class="footer">
+		<p>© Copyright 2014 by isnowfy, Designed by isnowfy</p>
+	</div>
+</div>
+<script src="main.js"></script>
+<script id="content" type="text/mustache">
+    <h1>{{title}}</h1>
+    <div class="tag">
+    {{date}}
+    {{#tags}}
+    <a href="/#/tag/{{name}}">#{{name}}</a>
+    {{/tags}}
+    </div>
+</script>
+<script id="pagesTemplate" type="text/mustache">
+    {{#pages}}
+    <li>
+        <a href="{{path}}">{{title}}</a>
+    </li>
+    {{/pages}}
+</script>
+<script>
+$(document).ready(function() {
+    $.ajax({
+        url: "main.json",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            $("#title").html(data.name);
+            var pagesTemplate = Hogan.compile($("#pagesTemplate").html());
+            var pagesHtml = pagesTemplate.render({"pages": data.pages});
+            $("#pages").append(pagesHtml);
+            //path
+            var path = "privacy.html";
+            //path end
+            var now = 0;
+            for (var i = 0; i < data.posts.length; ++i)
+                if (path == data.posts[i].path)
+                    now = i;
+            var post = data.posts[now];
+            var tmp = post.tags.split(" ");
+            var tags = [];
+            for (var i = 0; i < tmp.length; ++i)
+                if (tmp[i].length > 0)
+                    tags.push({"name": tmp[i]});
+            var contentTemplate = Hogan.compile($("#content").html());
+            var contentHtml = contentTemplate.render({"title": post.title, "tags": tags, "date": post.date});
+            $("#main").prepend(contentHtml);
+            if (data.disqus_shortname.length > 0) {
+                var disqus_shortname = data.disqus_shortname;
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            }
+        }
+    });
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ["\\(", "\\)"]], processEscapes: true}});
+</script>
+</body>
+</html>
